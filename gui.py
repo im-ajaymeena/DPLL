@@ -4,22 +4,8 @@ import timeit
 #from timeit import Timer
 
 root = Tk()
-
 solu = {}
-
-#def printNmae():
-#	print("Hello world")
-
-# button1 = Button(root, text="Print name", command=printNmae)
-# button1.pack()
-
-#our_clauses = [[1,2,3,5],[-1,-2,-3],[1,2,3,5],[-1,-2,-3],[1,2,3,5],[-1,-2,-3]]
 our_clauses = []
-
-
-#t = Text(root)
-
-
 
 left_outer = Frame(root, bd=1)
 left_outer.pack(side=LEFT, fill=Y, pady=5, padx=5)
@@ -44,21 +30,13 @@ t_input.config(xscrollcommand=s_start.set)
 
 t_output = Text(right, width=40, height=200)
 t_output.pack(side=RIGHT)
-#s_end = Scrollbar(right)
-#s_end.pack(side=RIGHT)
-#s_end.config(command=t_output.yview)
-#t_output.config(yscrollcommand=s_end.set)
 
-
-
-
-b = Entry(center_outer)
-b.pack(side=TOP)
-#b.focus_set()
+input_entry = Entry(center_outer)
+input_entry.pack(side=TOP)
 	
 def ps():
 	print("H")
-	a=Entry.get(b)
+	a=Entry.get(input_entry)
 	our_clauses.append(list(map(int, a.split(','))))
 	t_input.delete('1.0',END)
 	t_input.insert(END,'All clause sets shown in \n integer format:')
@@ -72,7 +50,7 @@ def ps():
 			t_input.insert(END, ' ')
 		t_input.insert(END, '\n')
 	print(our_clauses)
-	b.delete(0, 'end')
+	input_entry.delete(0, 'end')
 	
 append_button = Button(center_outer, text="append",command=ps)
 append_button.pack(side=TOP)
@@ -100,16 +78,9 @@ def run_dpll():
 			t_output.insert(END, solu[set])
 			t_output.insert(END, '\n')
 	
-	
-
 
 button_dpll = Button(center_outer, text="DPLL",command=run_dpll)
 button_dpll.pack(side=TOP)
-
-
-
-
-
 
 root.geometry("500x200")
 root.mainloop()
